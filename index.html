@@ -26,6 +26,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--text);
@@ -84,6 +88,37 @@
 
         .nav-links a:hover {
             color: var(--primary);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
         }
 
         /* Hero Section */
@@ -407,10 +442,52 @@
             font-size: 14px;
         }
 
+        /* Legal sections (hidden by default) */
+        .legal-section {
+            display: none;
+            padding: 120px 0 60px;
+            background: var(--bg-alt);
+        }
+
+        .legal-section.active {
+            display: block;
+        }
+
+        .legal-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 24px;
+        }
+
+        .legal-section p {
+            color: var(--text);
+            margin-bottom: 16px;
+            max-width: 800px;
+        }
+
         /* Mobile adjustments */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px 24px;
+                gap: 16px;
+                border-bottom: 1px solid #e2e8f0;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
             }
 
             .hero {
@@ -424,6 +501,7 @@
     </style>
 
     <script>
+      // Checkout banner - preserved as-is
       (function(){
         const q=new URLSearchParams(window.location.search);
         const state=q.get('checkout');
@@ -442,18 +520,52 @@
         }else if(state==='cancel'){
           msg.style.background='#fef3c7';
           msg.style.color='#92400e';
-          msg.textContent='⚠️ Checkout cancelled. You can choose any plan whenever you're ready.';
+          msg.textContent='⚠️ Checkout cancelled. You can choose any plan whenever you\'re ready.';
         } else {
           return;
         }
         document.body.prepend(msg);
       })();
+
+      // Mobile menu toggle
+      document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', function() {
+          hamburger.classList.toggle('active');
+          navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+          });
+        });
+
+        // Handle hash navigation for legal sections
+        const hash = window.location.hash;
+        if (hash === '#privacy' || hash === '#terms') {
+          const section = document.querySelector('.legal-section');
+          if (section) {
+            section.classList.add('active');
+            section.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
     </script>
 </head>
 <body>
     <nav>
         <div class="container nav-content">
-            <a href="#" class="logo">Auto<span>Bookr</span></a>
+            <a href="/" class="logo">Auto<span>Bookr</span></a>
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="nav-links">
                 <li><a href="#how-it-works">How It Works</a></li>
                 <li><a href="#pricing">Pricing</a></li>
@@ -590,15 +702,42 @@
                 </div>
                 <div class="footer-section">
                     <h4>Company</h4>
-                    <a href="#">About Us</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
+                    <a href="#about">About Us</a>
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 AutoBookr. All rights reserved.</p>
+                <p>© 2026 AutoBookr. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Legal placeholder sections -->
+    <section id="about" class="legal-section">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>AutoBookr is a UK-based company dedicated to helping trade businesses never miss a customer call. Founded in 2024, we build automation tools that turn missed calls into booked jobs.</p>
+            <p>Our mission is simple: ensure every potential customer gets a prompt response, every time.</p>
+        </div>
+    </section>
+
+    <section id="privacy" class="legal-section">
+        <div class="container">
+            <h2>Privacy Policy</h2>
+            <p>AutoBookr is committed to protecting your privacy. We collect only the data necessary to provide our service, including phone numbers for SMS notifications and basic business information.</p>
+            <p>We never sell your data to third parties. All customer information is stored securely and handled in accordance with UK data protection regulations.</p>
+            <p>For questions about our privacy practices, contact us at hello@autobookr.co.uk.</p>
+        </div>
+    </section>
+
+    <section id="terms" class="legal-section">
+        <div class="container">
+            <h2>Terms of Service</h2>
+            <p>By using AutoBookr, you agree to use our service responsibly and in accordance with these terms.</p>
+            <p>Our service provides automated SMS responses to missed calls. You are responsible for ensuring your use of the service complies with all applicable laws and regulations, including telecommunications and marketing laws in the UK.</p>
+            <p>We reserve the right to modify these terms at any time. Continued use of the service constitutes acceptance of updated terms.</p>
+        </div>
+    </section>
 </body>
 </html>
