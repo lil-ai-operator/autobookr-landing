@@ -1,5 +1,59 @@
 // AutoBookr - Shared JavaScript
 
+// Theme (dark/light) toggle
+(function() {
+    const storageKey = 'autobookr-theme';
+    const root = document.documentElement;
+
+    function getPreferredTheme() {
+        const saved = localStorage.getItem(storageKey);
+        if (saved === 'dark' || saved === 'light') return saved;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+        } else {
+            root.removeAttribute('data-theme');
+        }
+    }
+
+    function updateToggleLabel(btn) {
+        if (!btn) return;
+        const isDark = root.getAttribute('data-theme') === 'dark';
+        btn.textContent = isDark ? '☀️ Light' : '🌙 Dark';
+        btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+
+    applyTheme(getPreferredTheme());
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const nav = document.querySelector('.nav-content');
+        if (!nav) return;
+
+        const toggle = document.createElement('button');
+        toggle.type = 'button';
+        toggle.className = 'theme-toggle';
+        updateToggleLabel(toggle);
+
+        const navLinks = nav.querySelector('.nav-links');
+        if (navLinks) {
+            nav.insertBefore(toggle, navLinks);
+        } else {
+            nav.appendChild(toggle);
+        }
+
+        toggle.addEventListener('click', function() {
+            const isDark = root.getAttribute('data-theme') === 'dark';
+            const next = isDark ? 'light' : 'dark';
+            applyTheme(next);
+            localStorage.setItem(storageKey, next);
+            updateToggleLabel(toggle);
+        });
+    });
+})();
+
 // Checkout banner
 (function() {
     const q = new URLSearchParams(window.location.search);

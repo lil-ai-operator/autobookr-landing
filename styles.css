@@ -9,6 +9,20 @@
     --bg: #ffffff;
     --bg-alt: #f8fafc;
     --accent: #10b981;
+    --surface: #ffffff;
+    --surface-soft: #f8fafc;
+    --border: #e2e8f0;
+}
+
+[data-theme="dark"] {
+    --secondary: #e2e8f0;
+    --text: #cbd5e1;
+    --text-light: #94a3b8;
+    --bg: #020617;
+    --bg-alt: #0b1222;
+    --surface: #0f172a;
+    --surface-soft: #111c31;
+    --border: #1e293b;
 }
 
 * {
@@ -26,6 +40,7 @@ body {
     color: var(--text);
     line-height: 1.6;
     background: var(--bg);
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .container {
@@ -890,6 +905,83 @@ footer {
         opacity: 1;
         transform: none;
     }
+}
+
+/* Theme toggle */
+.theme-toggle {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-1px);
+    border-color: var(--primary);
+}
+
+/* Dark mode component overrides */
+nav {
+    border-bottom: 1px solid var(--border);
+}
+
+[data-theme="dark"] nav {
+    background: rgba(2, 6, 23, 0.9);
+}
+
+[data-theme="dark"] .nav-links {
+    background: var(--surface);
+}
+
+[data-theme="dark"] .page-header,
+[data-theme="dark"] .hero {
+    background: linear-gradient(180deg, #0b1222 0%, #020617 100%);
+}
+
+[data-theme="dark"] .step,
+[data-theme="dark"] .pricing-card,
+[data-theme="dark"] .testimonial,
+[data-theme="dark"] .feature-card,
+[data-theme="dark"] .faq-item,
+[data-theme="dark"] .benefit-item,
+[data-theme="dark"] .use-case-item,
+[data-theme="dark"] .stat-card,
+[data-theme="dark"] .contact-form {
+    background: var(--surface);
+    border-color: var(--border);
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .section-alt,
+[data-theme="dark"] .testimonials,
+[data-theme="dark"] .benefit-icon,
+[data-theme="dark"] .pricing-btn {
+    background: var(--surface-soft);
+}
+
+[data-theme="dark"] .pricing-btn {
+    color: var(--secondary);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea {
+    background: #0b1222;
+    color: var(--secondary);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .hamburger span {
+    background: var(--secondary);
+}
+
+[data-theme="dark"] footer {
+    background: #020617;
 }
 
 /* Mobile adjustments */
