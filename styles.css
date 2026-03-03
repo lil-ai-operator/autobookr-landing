@@ -307,6 +307,7 @@ nav {
     gap: 32px;
     max-width: 1000px;
     margin: 0 auto;
+    align-items: stretch;
 }
 
 .pricing-card {
@@ -319,12 +320,14 @@ nav {
     position: relative;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .pricing-card:hover {
     border-color: var(--primary);
-    box-shadow: 0 8px 40px rgba(37, 99, 235, 0.15);
-    animation: pricePulse 1.6s ease-in-out infinite;
+    box-shadow: 0 12px 44px rgba(37, 99, 235, 0.25), 0 0 0 2px rgba(59, 130, 246, 0.18);
+    animation: pricePulse 1.2s ease-in-out infinite;
+    transform: translateY(-6px) scale(1.01);
 }
 
 .pricing-card:hover .price {
@@ -351,6 +354,10 @@ nav {
 .pricing-card.featured {
     border-color: var(--primary);
     transform: scale(1.05);
+}
+
+.pricing-card.featured:hover {
+    transform: scale(1.06) translateY(-6px);
 }
 
 .pricing-card.featured::before {
