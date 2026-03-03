@@ -156,6 +156,41 @@ nav {
     padding: 160px 0 100px;
     text-align: center;
     background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before,
+.hero::after {
+    content: '';
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(2px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero::before {
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.24) 0%, rgba(59, 130, 246, 0) 70%);
+    top: -120px;
+    left: -80px;
+    animation: blobFloat 9s ease-in-out infinite;
+}
+
+.hero::after {
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0) 70%);
+    right: -80px;
+    bottom: -120px;
+    animation: blobFloat 10s ease-in-out infinite reverse;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
 }
 
 .hero h1 {
@@ -271,6 +306,16 @@ nav {
 .pricing-card:hover {
     border-color: var(--primary);
     box-shadow: 0 8px 40px rgba(37, 99, 235, 0.15);
+}
+
+.tilt-card {
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.tilt-card:hover {
+    box-shadow: 0 12px 44px rgba(15, 23, 42, 0.12);
 }
 
 .pricing-card.featured {
@@ -756,6 +801,95 @@ footer {
     border-top: 1px solid #1e293b;
     color: #64748b;
     font-size: 14px;
+}
+
+/* Animation layer */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes softFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes blobFloat {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(14px, -10px, 0) scale(1.05);
+    }
+}
+
+@keyframes gentleGlow {
+    0%, 100% {
+        text-shadow: 0 0 0 rgba(37, 99, 235, 0);
+    }
+    50% {
+        text-shadow: 0 0 24px rgba(37, 99, 235, 0.25);
+    }
+}
+
+.hero h1 {
+    animation: fadeUp 0.8s ease both;
+}
+
+.hero p {
+    animation: fadeUp 0.9s ease 0.08s both;
+}
+
+.hero .cta-button {
+    animation: fadeUp 1s ease 0.14s both;
+}
+
+.hero h1 span {
+    display: inline-block;
+    animation: gentleGlow 3s ease-in-out infinite;
+}
+
+.step-number,
+.benefit-icon,
+.testimonial-avatar,
+.use-case-icon {
+    animation: softFloat 3.4s ease-in-out infinite;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    will-change: opacity, transform;
+}
+
+.reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+
+    .reveal,
+    .reveal.in-view {
+        opacity: 1;
+        transform: none;
+    }
 }
 
 /* Mobile adjustments */
