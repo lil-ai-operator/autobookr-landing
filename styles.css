@@ -167,6 +167,17 @@ nav {
     margin-bottom: 48px;
 }
 
+/* Top banner */
+.top-banner {
+    margin-top: 82px;
+    background: linear-gradient(90deg, #1d4ed8, #2563eb);
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 14px;
+}
+
 /* Hero Section (Home) */
 .hero {
     padding: 160px 0 100px;
@@ -444,6 +455,74 @@ nav {
 
 .pricing-card.featured .pricing-btn:hover {
     background: var(--primary-dark);
+}
+
+/* Comparison + portal */
+.compare-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.compare-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.compare-card h3 {
+    color: var(--secondary);
+    margin-bottom: 12px;
+}
+
+.compare-card ul {
+    list-style: none;
+}
+
+.compare-card li {
+    padding: 8px 0;
+    color: var(--text-light);
+}
+
+.compare-card li::before {
+    content: '✓';
+    color: var(--accent);
+    margin-right: 8px;
+}
+
+.compare-card.muted {
+    opacity: 0.88;
+}
+
+.portal-preview {
+    max-width: 840px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+}
+
+.portal-preview p {
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.portal-preview ul {
+    list-style: none;
+}
+
+.portal-preview li {
+    color: var(--text-light);
+    padding: 8px 0;
+}
+
+.portal-preview li::before {
+    content: '→';
+    color: var(--primary);
+    margin-right: 8px;
 }
 
 /* Testimonials */
@@ -1107,6 +1186,12 @@ nav {
     .hamburger {
         display: flex;
         margin-left: 2px;
+    }
+
+    .top-banner {
+        margin-top: 74px;
+        font-size: 12px;
+        padding: 8px 10px;
     }
 
     .hero {
