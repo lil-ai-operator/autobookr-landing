@@ -38,7 +38,11 @@
         updateToggleLabel(toggle);
 
         const navLinks = nav.querySelector('.nav-links');
-        if (navLinks) {
+        const hamburger = nav.querySelector('.hamburger');
+
+        if (hamburger) {
+            nav.insertBefore(toggle, hamburger);
+        } else if (navLinks) {
             nav.insertBefore(toggle, navLinks);
         } else {
             nav.appendChild(toggle);
