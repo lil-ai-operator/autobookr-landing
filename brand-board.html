@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoBookr Brand Board</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green: #00FF88;
+            --black: #0D0D0D;
+            --white: #FFFFFF;
+            --purple: #8B5CF6;
+            --orange: #F59E0B;
+            --slate: #1E293B;
+            --gray: #64748B;
+            --border: #334155;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0D0D0D 0%, #1A1A2E 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 48px;
+        }
+        
+        .brand-board {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        h1 span {
+            color: var(--green);
+        }
+        
+        .subtitle {
+            color: var(--gray);
+            font-size: 18px;
+            margin-bottom: 48px;
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gray);
+            margin-bottom: 16px;
+        }
+        
+        /* Logo Section */
+        .logo-showcase {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        
+        .logo-card {
+            background: var(--slate);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 200px;
+        }
+        
+        .logo-card.dark {
+            background: var(--black);
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .logo-text .accent {
+            color: var(--green);
+        }
+        
+        /* Colors */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 16px;
+        }
+        
+        .color-swatch {
+            border-radius: 12px;
+            padding: 16px;
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        
+        .color-swatch .name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .color-swatch .hex {
+            font-family: monospace;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        /* Typography */
+        .type-grid {
+            display: grid;
+            gap: 16px;
+        }
+        
+        .type-row {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+        }
+        
+        .type-label {
+            width: 60px;
+            font-size: 12px;
+            color: var(--gray);
+        }
+        
+        /* Buttons */
+        .button-showcase {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: var(--green);
+            color: var(--black);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--green);
+            color: var(--green);
+        }
+        
+        /* Cards */
+        .card-showcase {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .sample-card {
+            background: var(--slate);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            width: 200px;
+        }
+        
+        .sample-card.purple {
+            background: linear-gradient(135deg, var(--purple) 0%, #6D28D9 100%);
+            border: none;
+        }
+        
+        .sample-card.orange {
+            background: linear-gradient(135deg, var(--orange) 0%, #D97706 100%);
+            border: none;
+        }
+        
+        .sample-card h4 {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .sample-card p {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        /* Tagline */
+        .tagline {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--green);
+        }
+    </style>
+</head>
+<body>
+    <div class="brand-board">
+        <h1>Auto<span>Bookr</span></h1>
+        <p class="subtitle">Brand Board • March 2026</p>
+        
+        <div class="section">
+            <div class="section-title">Logo</div>
+            <div class="logo-showcase">
+                <div class="logo-card dark">
+                    <span class="logo-text">Auto<span class="accent">Bookr</span></span>
+                </div>
+                <div class="logo-card">
+                    <span class="logo-text" style="color: white;">Auto<span class="accent">Bookr</span></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Colors</div>
+            <div class="color-grid">
+                <div class="color-swatch" style="background: var(--green);">
+                    <span class="name">Neon Green</span>
+                    <span class="hex">#00FF88</span>
+                </div>
+                <div class="color-swatch" style="background: var(--black);">
+                    <span class="name">Deep Black</span>
+                    <span class="hex">#0D0D0D</span>
+                </div>
+                <div class="color-swatch" style="background: var(--white);">
+                    <span class="name" style="color: black;">White</span>
+                    <span class="hex" style="color: black;">#FFFFFF</span>
+                </div>
+                <div class="color-swatch" style="background: var(--purple);">
+                    <span class="name">Purple</span>
+                    <span class="hex">#8B5CF6</span>
+                </div>
+                <div class="color-swatch" style="background: var(--orange);">
+                    <span class="name">Orange</span>
+                    <span class="hex">#F59E0B</span>
+                </div>
+                <div class="color-swatch" style="background: var(--slate);">
+                    <span class="name">Slate</span>
+                    <span class="hex">#1E293B</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Typography</div>
+            <div class="type-grid">
+                <div class="type-row">
+                    <span class="type-label">H1</span>
+                    <span style="font-size: 48px; font-weight: 700;">Never miss a booking</span>
+                </div>
+                <div class="type-row">
+                    <span class="type-label">H2</span>
+                    <span style="font-size: 36px; font-weight: 600;">Section Heading</span>
+                </div>
+                <div class="type-row">
+                    <span class="type-label">H3</span>
+                    <span style="font-size: 24px; font-weight: 600;">Card Title</span>
+                </div>
+                <div class="type-row">
+                    <span class="type-label">Body</span>
+                    <span style="font-size: 16px;">Body text goes here</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Buttons</div>
+            <div class="button-showcase">
+                <button class="btn btn-primary">Get Started</button>
+                <button class="btn btn-secondary">Learn More</button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Cards</div>
+            <div class="card-showcase">
+                <div class="sample-card">
+                    <h4>Total Bookings</h4>
+                    <p>127</p>
+                </div>
+                <div class="sample-card purple">
+                    <h4>Revenue</h4>
+                    <p>£4,320</p>
+                </div>
+                <div class="sample-card orange">
+                    <h4>Missed Calls</h4>
+                    <p>23</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Tagline</div>
+            <p class="tagline">"Never miss a booking again"</p>
+        </div>
+    </div>
+</body>
+</html>

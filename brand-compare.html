@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoBookr Brand Mockup vs Current</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green: #00FF88;
+            --black: #0D0D0D;
+            --white: #FFFFFF;
+            --purple: #8B5CF6;
+            --orange: #F59E0B;
+            --slate: #1E293B;
+            --gray: #64748B;
+            --border: #334155;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0D0D0D;
+            color: white;
+            padding: 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+        
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .panel {
+            background: var(--slate);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .panel-header {
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .panel-title {
+            font-weight: 600;
+        }
+        
+        .badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .badge.current {
+            background: var(--gray);
+        }
+        
+        .badge.new {
+            background: var(--green);
+            color: var(--black);
+        }
+        
+        .panel-body {
+            padding: 24px;
+        }
+        
+        /* CURRENT STYLE */
+        .current-hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+        }
+        
+        .current-hero h2 {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+        
+        .current-hero p {
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+        
+        .current-btn {
+            background: #22c55e;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+        }
+        
+        .current-trust {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .current-trust span {
+            font-size: 13px;
+            color: #94a3b8;
+        }
+        
+        /* NEW STYLE */
+        .new-hero {
+            background: linear-gradient(135deg, #0D0D0D 0%, #1A1A2E 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+        }
+        
+        .new-hero h2 {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+        
+        .new-hero h2 span {
+            color: var(--green);
+        }
+        
+        .new-hero p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        .new-btn {
+            background: var(--green);
+            color: var(--black);
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+        }
+        
+        .new-trust {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .new-trust span {
+            font-size: 13px;
+            padding: 6px 12px;
+            background: var(--slate);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+        
+        /* Color Cards */
+        .color-section {
+            margin-top: 32px;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gray);
+            margin-bottom: 16px;
+        }
+        
+        .color-compare {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        
+        .color-row {
+            background: var(--slate);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        .color-swatch {
+            height: 40px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+        
+        .color-label {
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .color-hex {
+            font-family: monospace;
+            font-size: 11px;
+            color: var(--gray);
+        }
+        
+        /* Typography */
+        .type-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        
+        .type-panel {
+            background: var(--slate);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .type-sample {
+            margin-bottom: 16px;
+        }
+        
+        .type-label {
+            font-size: 11px;
+            color: var(--gray);
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔄 Current vs New Brand</h1>
+        <p style="color: var(--gray);">Side-by-side comparison</p>
+    </div>
+    
+    <div class="grid">
+        <!-- CURRENT -->
+        <div class="panel">
+            <div class="panel-header">
+                <span class="panel-title">Current Site</span>
+                <span class="badge current">Live Now</span>
+            </div>
+            <div class="panel-body">
+                <div class="current-hero">
+                    <h2>Turn missed calls into <span style="color: #22c55e;">booked jobs</span></h2>
+                    <p>AutoBookr instantly texts back missed callers for UK trades</p>
+                    <button class="current-btn">Start Recovering Leads</button>
+                    <div class="current-trust">
+                        <span>✅ Built for UK trades</span>
+                        <span>⚡ Replies in seconds</span>
+                        <span>🔒 Secure checkout</span>
+                    </div>
+                </div>
+                
+                <div class="color-section">
+                    <div class="section-title">Colors</div>
+                    <div class="color-compare">
+                        <div class="color-row">
+                            <div class="color-swatch" style="background: #22c55e;"></div>
+                            <div class="color-label">Green</div>
+                            <div class="color-hex">#22c55e</div>
+                        </div>
+                        <div class="color-row">
+                            <div class="color-swatch" style="background: #1a1a2e;"></div>
+                            <div class="color-label">Navy</div>
+                            <div class="color-hex">#1a1a2e</div>
+                        </div>
+                        <div class="color-row">
+                            <div class="color-swatch" style="background: #ffffff; border: 1px solid #333;"></div>
+                            <div class="color-label">White</div>
+                            <div class="color-hex">#ffffff</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- NEW -->
+        <div class="panel">
+            <div class="panel-header">
+                <span class="panel-title">New Brand</span>
+                <span class="badge new">Proposed</span>
+            </div>
+            <div class="panel-body">
+                <div class="new-hero">
+                    <h2>Never miss a <span>booking again</span></h2>
+                    <p>AutoBookr instantly texts back missed callers with a booking link. UK phone numbers. UK compliant.</p>
+                    <button class="new-btn">Start Recovering Leads</button>
+                    <div class="new-trust">
+                        <span>🇬🇧 UK Phone Numbers</span>
+                        <span>🔐 UK PSDM Compliant</span>
+                        <span>⚡ Replies in seconds</span>
+                    </div>
+                </div>
+                
+                <div class="color-section">
+                    <div class="section-title">Colors</div>
+                    <div class="color-compare">
+                        <div class="color-row">
+                            <div class="color-swatch" style="background: #00FF88;"></div>
+                            <div class="color-label">Neon Green</div>
+                            <div class="color-hex">#00FF88</div>
+                        </div>
+                        <div class="color-row">
+                            <div class="color-swatch" style="background: #0D0D0D;"></div>
+                            <div class="color-label">Deep Black</div>
+                            <div class="color-hex">#0D0D0D</div>
+                        </div>
+                        <div class="color-row">
+                            <div class="color-swatch" style="background: #1E293B;"></div>
+                            <div class="color-label">Slate</div>
+                            <div class="color-hex">#1E293B</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="panel" style="margin-top: 32px;">
+        <div class="panel-header">
+            <span class="panel-title">Dashboard Preview</span>
+            <span class="badge new">New Brand Only</span>
+        </div>
+        <div class="panel-body">
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+                <div style="background: var(--slate); border-radius: 12px; padding: 20px; border: 1px solid var(--border);">
+                    <div style="font-size: 12px; color: var(--gray); margin-bottom: 8px;">Total Bookings</div>
+                    <div style="font-size: 28px; font-weight: 700;">127</div>
+                </div>
+                <div style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); border-radius: 12px; padding: 20px;">
+                    <div style="font-size: 12px; opacity: 0.9; margin-bottom: 8px;">Revenue</div>
+                    <div style="font-size: 28px; font-weight: 700;">£4,320</div>
+                </div>
+                <div style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); border-radius: 12px; padding: 20px;">
+                    <div style="font-size: 12px; opacity: 0.9; margin-bottom: 8px;">Missed Calls</div>
+                    <div style="font-size: 28px; font-weight: 700;">23</div>
+                </div>
+                <div style="background: var(--green); border-radius: 12px; padding: 20px;">
+                    <div style="font-size: 12px; color: var(--black); margin-bottom: 8px;">Conversion</div>
+                    <div style="font-size: 28px; font-weight: 700; color: var(--black);">68%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
