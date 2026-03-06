@@ -274,4 +274,145 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 1000);
         });
     }
+    
+    // Newsletter form handling
+    const newsletterForm = document.getElementById('newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const input = newsletterForm.querySelector('input[type="email"]');
+            const btn = newsletterForm.querySelector('button');
+            const email = input.value;
+            
+            if (!email) return;
+            
+            const originalText = btn.textContent;
+            btn.textContent = 'Subscribing...';
+            btn.disabled = true;
+            
+            // Simulate subscription
+            setTimeout(function() {
+                btn.textContent = '✓ Subscribed!';
+                btn.style.background = '#10b981';
+                input.value = '';
+                setTimeout(function() {
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 3000);
+                
+                // Track subscription
+                if (window.autobookrTrack) {
+                    window.autobookrTrack.custom('newsletter_signup', { email: email });
+                }
+            }, 1000);
+        });
+    }
 });
+
+// ============================================
+// Analytics Tracking - CTA Click Events
+// ============================================
+(function() {
+    // Track all CTA button clicks
+    function trackCTAClick(ctaType, ctaText, ctaHref) {
+        const eventData = {
+            event: 'cta_click',
+            cta_type: ctaType,
+            cta_text: ctaText,
+            cta_href: ctaHref,
+            page: window.location.pathname.split('/').pop() || 'index.html',
+            timestamp: new Date().toISOString()
+        };
+        
+        console.log('📊 Analytics:', JSON.stringify(eventData, null, 2));
+        
+        // Also dispatch a custom event for potential GTM/analytics tools
+        window.dispatchEvent(new CustomEvent('autobookr_cta_click', { detail: eventData }));
+    }
+    
+    // Track pricing button clicks specifically
+    function trackPricingClick(planName, price, planType) {
+        const eventData = {
+            event: 'pricing_click',
+            plan: planName,
+            price: price,
+            plan_type: planType,
+            page: window.location.pathname.split('/').pop() || 'index.html',
+            timestamp: new Date().toISOString()
+        };
+        
+        console.log('📊 Analytics:', JSON.stringify(eventData, null, 2));
+        window.dispatchEvent(new CustomEvent('autobookr_pricing_click', { detail: eventData }));
+    }
+    
+    // Track nav link clicks
+    function trackNavClick(navText, navHref) {
+        const eventData = {
+            event: 'nav_click',
+            nav_text: navText,
+            nav_href: navHref,
+            timestamp: new Date().toISOString()
+        };
+        
+        console.log('📊 Analytics:', JSON.stringify(eventData, null, 2));
+        window.dispatchEvent(new CustomEvent('autobookr_nav_click', { detail: eventData }));
+    }
+    
+    // Track all CTA buttons on page
+    document.addEventListener('DOMContentLoaded', function() {
+        // Main CTA buttons (hero, sections)
+        document.querySelectorAll('.cta-button').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                trackCTAClick('main_cta', btn.textContent.trim(), btn.getAttribute('href'));
+            });
+        });
+        
+        // Pricing buttons
+        document.querySelectorAll('.pricing-btn').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                const card = btn.closest('.pricing-card');
+                const planName = card ? card.querySelector('h3').textContent : 'Unknown';
+                const priceEl = card ? card.querySelector('.price') : null;
+                const price = priceEl ? priceEl.textContent.trim() : 'Unknown';
+                trackPricingClick(planName, price, 'pricing_card');
+            });
+        });
+        
+        // Footer links (as CTAs)
+        document.querySelectorAll('footer a').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                trackCTAClick('footer_link', link.textContent.trim(), link.getAttribute('href'));
+            });
+        });
+        
+        // Nav links (excluding external)
+        document.querySelectorAll('.nav-links a').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                trackNavClick(link.textContent.trim(), link.getAttribute('href'));
+            });
+        });
+        
+        // Track page view on load
+        console.log('📊 Analytics:', JSON.stringify({
+            event: 'page_view',
+            page: window.location.pathname.split('/').pop() || 'index.html',
+            referrer: document.referrer || 'direct',
+            timestamp: new Date().toISOString()
+        }, null, 2));
+    });
+    
+    // Expose tracking functions globally for manual tracking if needed
+    window.autobookrTrack = {
+        cta: trackCTAClick,
+        pricing: trackPricingClick,
+        nav: trackNavClick,
+        custom: function(eventName, data) {
+            console.log('📊 Analytics:', JSON.stringify({
+                event: eventName,
+                ...data,
+                timestamp: new Date().toISOString()
+            }, null, 2));
+        }
+    };
+})();
