@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - AutoBookr</title>
+    <title>Contact AutoBookr</title>
+    <meta name="description" content="Talk to AutoBookr about setup, pricing, demos, partnerships or whether missed call text-back is right for your trade business.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -32,8 +33,9 @@
 
     <section class="page-header">
         <div class="container">
-            <h1>Get in Touch</h1>
-            <p>We'd love to hear from you. Questions, feedback, or just want to say hello?</p>
+            <p class="mini-label align-center">Contact</p>
+            <h1>Tell us about your business and we will point you to the right next step</h1>
+            <p>Whether you want a quick demo, help choosing a plan, or a partnership chat, keep it simple and we will get back to you.</p>
         </div>
     </section>
 
@@ -41,45 +43,54 @@
         <div class="container">
             <div class="contact-wrapper">
                 <div class="contact-form">
-                    <h3>Send Us a Message</h3>
+                    <h3>Request a callback or demo</h3>
+                    <p class="contact-intro">Best for: pricing questions, setup advice, trial help, multi-location enquiries, and partner chats.</p>
                     <form id="contact-form">
                         <div class="form-group">
-                            <label for="name">Your Name</label>
+                            <label for="name">Your name</label>
                             <input type="text" id="name" name="name" placeholder="John Smith" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email Address</label>
+                            <label for="business">Business name</label>
+                            <input type="text" id="business" name="business" placeholder="Smith & Sons Plumbing">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
                             <input type="email" id="email" name="email" placeholder="john@example.co.uk" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone Number</label>
+                            <label for="phone">Phone number</label>
                             <input type="tel" id="phone" name="phone" placeholder="07123 456789">
                         </div>
                         <div class="form-group">
-                            <label for="business">Business Name</label>
-                            <input type="text" id="business" name="business" placeholder="Your Business Ltd">
+                            <label for="message">What do you need help with?</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Example: We are a 4-person electrical team in Birmingham and want to know whether Growth or Pro makes more sense." required></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
-                        </div>
-                        <button type="submit" class="cta-button" style="width: 100%; border: none; cursor: pointer;">Send Message</button>
+                        <button type="submit" class="cta-button" style="width: 100%; border: none; cursor: pointer;">Send enquiry</button>
                     </form>
                 </div>
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <p><strong>Email:</strong> hello@autobookr.co.uk</p>
-                    <p><strong>Phone:</strong> 01234 567890</p>
-                    <p><strong>Hours:</strong> Mon-Fri 9am-5pm</p>
-                    
-                    <h3 style="margin-top: 32px;">Sales Inquiries</h3>
-                    <p>Interested in AutoBookr for your business? Our sales team is happy to help you choose the right plan and answer any questions.</p>
-                    
-                    <h3 style="margin-top: 32px;">Support</h3>
-                    <p>Already a customer? Our support team is here to help with any technical issues or account questions. We'll respond within 24 hours.</p>
-                    
-                    <h3 style="margin-top: 32px;">Partnerships</h3>
-                    <p>Interested in partnering with AutoBookr? We're always looking to collaborate with trade associations and industry partners.</p>
+                <div class="contact-info contact-info-card">
+                    <div class="info-panel">
+                        <h3>Why contact us?</h3>
+                        <ul class="check-list compact">
+                            <li>Sense-check whether AutoBookr is a fit</li>
+                            <li>Get help choosing the right plan</li>
+                            <li>Ask about volume or multi-location setup</li>
+                            <li>Talk through partnership opportunities</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-panel">
+                        <h3>Contact details</h3>
+                        <p><strong>Email:</strong> hello@autobookr.co.uk</p>
+                        <p><strong>Phone:</strong> 01234 567890</p>
+                        <p><strong>Hours:</strong> Mon-Fri, 9am-5pm</p>
+                    </div>
+
+                    <div class="info-panel">
+                        <h3>Good to include</h3>
+                        <p>Your trade, team size, how many calls you miss, and whether you mainly want callback requests, booking links, or a cleaner payment flow.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -87,19 +98,20 @@
 
     <section class="section section-alt">
         <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="mini-label align-center">Quick answers</p>
+            <h2 class="section-title">Common pre-sales questions</h2>
             <div class="faq-grid">
                 <div class="faq-item">
-                    <h3>How quickly will I get a response?</h3>
-                    <p>We aim to respond to all enquiries within 24 hours during business days. For urgent matters, please call us directly.</p>
+                    <h3>How quickly will someone reply?</h3>
+                    <p>We aim to respond within one working day, often sooner for straightforward sales or setup questions.</p>
                 </div>
                 <div class="faq-item">
-                    <h3>Can I book a demo?</h3>
-                    <p>Absolutely! Contact us to schedule a free demo of AutoBookr. We'll show you how it works and answer any questions.</p>
+                    <h3>Can I talk through my use case before buying?</h3>
+                    <p>Yes. If you are unsure which flow or plan makes sense, send a short summary and we will help you narrow it down.</p>
                 </div>
                 <div class="faq-item">
-                    <h3>Do you offer on-site training?</h3>
-                    <p>For Pro plan customers, we offer on-site training and setup assistance. Contact our sales team to learn more.</p>
+                    <h3>Do you handle larger or multi-location setups?</h3>
+                    <p>Yes. Use the contact form and mention branch count, team size and any special routing needs.</p>
                 </div>
             </div>
         </div>
@@ -110,19 +122,22 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>AutoBookr</h4>
-                    <p>Never miss a customer call again. Automated text-back for UK trade businesses.</p>
+                    <p>Missed call text-back for UK trades businesses.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <a href="how-it-works.html">How It Works</a>
                     <a href="pricing.html">Pricing</a>
                     <a href="use-cases.html">Use Cases</a>
+                    <a href="compare.html">Compare</a>
                     <a href="faq.html">FAQ</a>
                 </div>
                 <div class="footer-section">
                     <h4>Company</h4>
                     <a href="about.html">About Us</a>
                     <a href="contact.html">Contact</a>
+                    <a href="international.html">International</a>
+                    <a href="whitelabel.html">Partners</a>
                     <a href="privacy.html">Privacy Policy</a>
                     <a href="terms.html">Terms of Service</a>
                 </div>

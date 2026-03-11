@@ -1566,3 +1566,295 @@ nav {
         grid-template-columns: 1fr;
     }
 }
+
+/* ===== Overnight conversion/trust refresh ===== */
+.badge-trust {
+    background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+    color: #5b21b6;
+}
+
+.hero-premium {
+    padding-top: 136px;
+}
+
+.hero-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+    gap: 36px;
+    align-items: stretch;
+}
+
+.hero-copy {
+    text-align: left;
+}
+
+.eyebrow,
+.mini-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--primary);
+    margin-bottom: 16px;
+}
+
+.align-center {
+    display: block;
+    text-align: center;
+}
+
+.section-title.left {
+    text-align: left;
+}
+
+.hero-lead {
+    max-width: 680px;
+    margin: 0 0 28px;
+}
+
+.hero-actions,
+.cta-band-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+    padding: 16px 28px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    background: var(--surface);
+    color: var(--secondary);
+    border: 1px solid var(--border);
+    transition: all 0.25s ease;
+}
+
+.secondary-button:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.micro-proof {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+}
+
+.micro-proof span,
+.plan-tag {
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.hero-panel-card,
+.problem-card,
+.cta-band,
+.info-panel {
+    background: var(--surface);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: 0 12px 34px rgba(15, 23, 42, 0.06);
+}
+
+.hero-panel-card {
+    border-radius: 28px;
+    padding: 28px;
+    height: 100%;
+}
+
+.panel-label {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+}
+
+.sms-card {
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+    color: #e2e8f0;
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 18px;
+}
+
+.sms-time {
+    display: block;
+    color: #93c5fd;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.panel-checks,
+.check-list,
+.metric-list {
+    list-style: none;
+    padding: 0;
+}
+
+.panel-checks li,
+.check-list li,
+.metric-list li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 12px;
+    color: var(--text);
+}
+
+.panel-checks li::before,
+.check-list li::before,
+.metric-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent);
+    font-weight: 800;
+}
+
+.trust-strip-strong .trust-item {
+    font-weight: 700;
+}
+
+.section-tight {
+    padding-top: 48px;
+}
+
+.problem-outcome-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+}
+
+.problem-card {
+    border-radius: 24px;
+    padding: 30px;
+}
+
+.outcome-card {
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.feature-grid-polished .feature-card {
+    border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.audience-grid .compare-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.audience-grid .compare-card li {
+    padding-left: 22px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.audience-grid .compare-card li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: 800;
+}
+
+.trust-benefits {
+    max-width: 920px;
+}
+
+.contact-intro {
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.contact-info-card {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.info-panel {
+    border-radius: 24px;
+    padding: 28px;
+}
+
+.check-list.compact li {
+    margin-bottom: 10px;
+}
+
+.cta-band {
+    border-radius: 28px;
+    padding: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.cta-band h2 {
+    color: var(--secondary);
+    font-size: clamp(28px, 3.5vw, 38px);
+    margin-bottom: 10px;
+}
+
+@media (max-width: 980px) {
+    .hero-shell,
+    .problem-outcome-grid,
+    .cta-band {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-shell,
+    .problem-outcome-grid {
+        gap: 24px;
+    }
+
+    .cta-band {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 760px) {
+    .hero-premium {
+        padding-top: 120px;
+    }
+
+    .hero-copy {
+        text-align: center;
+    }
+
+    .hero-lead {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-actions,
+    .cta-band-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .secondary-button {
+        width: 100%;
+    }
+
+    .problem-card,
+    .hero-panel-card,
+    .info-panel,
+    .cta-band {
+        padding: 24px;
+    }
+}
