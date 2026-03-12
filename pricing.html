@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing - AutoBookr</title>
+    <title>Pricing | AutoBookr</title>
+    <meta name="description" content="Simple AutoBookr pricing for UK trades. Pick the plan that fits your business, get set up quickly, and stop losing missed-call leads.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-cleanup-overrides.css">
 </head>
 <body>
     <nav>
@@ -32,61 +34,73 @@
 
     <section class="page-header">
         <div class="container">
-            <h1>Simple, Transparent Pricing</h1>
-            <p>Choose the plan that fits your business. No hidden fees, cancel anytime.</p>
+            <p class="mini-label align-center">Pricing</p>
+            <h1>Simple monthly plans for busy UK trades</h1>
+            <p>Choose the level that fits how many missed calls you handle. No long contracts, secure billing, and practical setup support.</p>
         </div>
     </section>
 
-    <section class="pricing section">
+    <section class="section section-tight">
         <div class="container">
+            <div class="trust-strip trust-strip-strong pricing-reassurance-strip">
+                <div class="trust-item">No long contracts</div>
+                <div class="trust-item">Cancel any time</div>
+                <div class="trust-item">Secure Stripe billing</div>
+                <div class="trust-item">Setup help included</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing section" id="pricing">
+        <div class="container">
+            <p class="mini-label align-center">Plans</p>
+            <h2 class="section-title">Pick the level that matches your business now</h2>
+            <p class="section-subtitle pricing-subtitle">All plans include missed-call detection, instant text-back, and a cleaner next step for your caller.</p>
             <div class="pricing-grid">
                 <div class="pricing-card">
+                    <p class="plan-tag">For solo trades and owner-operators</p>
                     <h3>Starter</h3>
                     <div class="price">£19<span>/mo</span></div>
-                    <p class="value-anchor">Never lose a lead to a missed call again</p>
+                    <p class="value-anchor">Professional missed-call cover without extra admin</p>
                     <ul>
-                        <li><strong>Instant text-back</strong> when you miss a call</li>
-                        <li><strong>Missed call alerts</strong> sent to your phone</li>
-                        <li><strong>Basic templates</strong> — set & forget</li>
-                        <li>Email support (48hr response)</li>
+                        <li>Instant text-back when you miss a call</li>
+                        <li>Simple caller reply flow</li>
+                        <li>Lead alert sent to you quickly</li>
+                        <li>Email support</li>
                     </ul>
-                    <p style="font-size: 0.9em; color: var(--text-light); margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);">❌ No payment collection<br>❌ No custom automation<br>❌ No analytics</p>
-                    <a href="https://buy.stripe.com/test_dRm28qbvL5L8gEjdN0a3u00" class="pricing-btn">Start Free</a>
-                    <p style="text-align: center; font-size: 0.85em; color: var(--text-light); margin-top: 12px;">Best for: Solo traders, new businesses</p>
+                    <a href="https://buy.stripe.com/test_dRm28qbvL5L8gEjdN0a3u00" class="pricing-btn">Start Starter</a>
+                    <p class="plan-fit">Best for: solo plumbers, electricians and small owner-led teams</p>
                 </div>
                 <div class="pricing-card featured">
-                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 4px 16px; border-radius: 20px; font-size: 0.8em; font-weight: 600;">MOST POPULAR</div>
+                    <div class="pricing-badge">Most practical for most teams</div>
+                    <p class="plan-tag">For busy growing trade businesses</p>
                     <h3>Growth</h3>
                     <div class="price">£49<span>/mo</span></div>
-                    <p class="value-anchor">Recover 5–15 more jobs/month • Payback in 2 weeks</p>
+                    <p class="value-anchor">The clearest route to better lead handling and cleaner follow-up</p>
                     <ul>
-                        <li><strong>Everything in Starter, plus:</strong></li>
-                        <li>✅ <strong>Stripe payments</strong> — collect deposits instantly</li>
-                        <li>✅ <strong>Custom message templates</strong> — match your brand</li>
-                        <li>✅ <strong>Priority support</strong> (24hr response)</li>
-                        <li>✅ <strong>Lead notifications</strong> — never miss a prospective customer</li>
+                        <li>Everything in Starter</li>
+                        <li>Custom text templates</li>
+                        <li>Booking or payment link support</li>
+                        <li>Priority support</li>
+                        <li>Cleaner lead capture flow</li>
                     </ul>
-                    <p style="font-size: 0.9em; color: var(--text-light); margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);">❌ No analytics dashboard<br>❌ No multi-number support<br>❌ No API access</p>
-                    <a href="https://buy.stripe.com/test_bJe14m2Zf7TgfAf6kya3u01" class="pricing-btn">Start Free</a>
-                    <p style="text-align: center; font-size: 0.85em; color: var(--text-light); margin-top: 12px;">Best for: Growing trades • 2–5 person teams</p>
-                    <p style="text-align: center; font-size: 0.85em; color: var(--secondary); margin-top: 8px;">⭐ 78% of users choose Growth</p>
+                    <a href="https://buy.stripe.com/test_bJe14m2Zf7TgfAf6kya3u01" class="pricing-btn">Choose Growth</a>
+                    <p class="plan-fit">Best for: 2–5 person teams that win work by phone</p>
                 </div>
                 <div class="pricing-card">
+                    <p class="plan-tag">For higher-volume operators</p>
                     <h3>Pro</h3>
                     <div class="price">£99<span>/mo</span></div>
-                    <p class="value-anchor">Full automation for serious traders & teams</p>
+                    <p class="value-anchor">More automation, reporting and hands-on support</p>
                     <ul>
-                        <li><strong>Everything in Growth, plus:</strong></li>
-                        <li>🚀 <strong>Advanced automation rules</strong> — complex workflows handled</li>
-                        <li>📊 <strong>Analytics dashboard</strong> — track leads, conversions & revenue</li>
-                        <li>📞 <strong>Multiple phone numbers</strong> — different services/locations</li>
-                        <li>🔗 <strong>API access</strong> — integrate with your existing software</li>
-                        <li>👤 <strong>Dedicated account manager</strong> — personal support</li>
+                        <li>Everything in Growth</li>
+                        <li>Advanced automation rules</li>
+                        <li>Analytics and reporting</li>
+                        <li>Multiple numbers or teams</li>
+                        <li>More hands-on support</li>
                     </ul>
-                    <p style="font-size: 0.9em; color: var(--text-light); margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);">✅ Full feature access</p>
-                    <a href="https://buy.stripe.com/test_00wcN40R7ehEewb7oCa3u02" class="pricing-btn">Start Free</a>
-                    <p style="text-align: center; font-size: 0.85em; color: var(--text-light); margin-top: 12px;">Best for: Multi-venue businesses • Agencies • Scale-ups</p>
-                    <p style="text-align: center; font-size: 0.85em; color: var(--secondary); margin-top: 8px;">💼 Used by 50+ trader teams</p>
+                    <a href="contact.html" class="pricing-btn pricing-btn-secondary">Talk about Pro</a>
+                    <p class="plan-fit">Best for: larger teams, multiple services, or higher call volume</p>
                 </div>
             </div>
         </div>
@@ -94,33 +108,20 @@
 
     <section class="section section-alt">
         <div class="container">
-            <h2 class="section-title">Power Up with Add-Ons</h2>
-            <p style="text-align: center; color: var(--text-light); max-width: 600px; margin: 0 auto 32px;">Enhance your AutoBookr with intelligent features.</p>
-            <div class="pricing-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-                <div class="pricing-card">
-                    <h3>AI Receptionist Lite</h3>
-                    <div class="price">£29<span>/mo</span></div>
-                    <p class="value-anchor">智能语音助手，处理简单咨询</p>
-                    <ul>
-                        <li>AI-powered voice greeting</li>
-                        <li>Basic FAQ answering</li>
-                        <li>Call routing to your mobile</li>
-                        <li>24/7 availability</li>
-                    </ul>
-                    <a href="contact.html" class="pricing-btn">Coming Soon</a>
+            <p class="mini-label align-center">Which plan fits?</p>
+            <h2 class="section-title">Choose by how your phone works in real life</h2>
+            <div class="feature-grid feature-grid-polished">
+                <div class="feature-card">
+                    <h3>Starter</h3>
+                    <p>Best if you mainly want a professional instant reply when you miss a call and do not need extra reporting or multi-step automation yet.</p>
                 </div>
-                <div class="pricing-card">
-                    <h3>AI Receptionist Pro</h3>
-                    <div class="price">£79<span>/mo</span></div>
-                    <p class="value-anchor">全功能AI前台，完全无需人工</p>
-                    <ul>
-                        <li>Everything in Lite</li>
-                        <li>Advanced conversation handling</li>
-                        <li>Booking & scheduling</li>
-                        <li>Multi-language support</li>
-                        <li>Custom voice scripts</li>
-                    </ul>
-                    <a href="contact.html" class="pricing-btn">Coming Soon</a>
+                <div class="feature-card">
+                    <h3>Growth</h3>
+                    <p>Best if you are handling regular enquiry volume and want custom messaging, cleaner lead routing, and a stronger next step for callers.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Pro</h3>
+                    <p>Best if you have a bigger team, more than one number, or want deeper automation and reporting support.</p>
                 </div>
             </div>
         </div>
@@ -128,146 +129,89 @@
 
     <section class="section">
         <div class="container">
-            <h2 class="section-title">How We Compare</h2>
-            <div style="overflow-x: auto;">
-                <table style="width: 100%; border-collapse: collapse; margin-top: 24px;">
+            <p class="mini-label align-center">Compare plans</p>
+            <h2 class="section-title">What changes as you move up</h2>
+            <div class="pricing-compare-wrap">
+                <table class="pricing-compare-table">
                     <thead>
-                        <tr style="border-bottom: 2px solid var(--border);">
-                            <th style="text-align: left; padding: 16px; color: var(--text-light);">Feature</th>
-                            <th style="text-align: center; padding: 16px; color: var(--primary); font-weight: 700;">AutoBookr</th>
-                            <th style="text-align: center; padding: 16px; color: var(--text-light);">Virtual Receptionist</th>
-                            <th style="text-align: center; padding: 16px; color: var(--text-light);">In-House Admin</th>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Starter</th>
+                            <th>Growth</th>
+                            <th>Pro</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="border-bottom: 1px solid var(--border);">
-                            <td style="padding: 16px;">Monthly Cost</td>
-                            <td style="padding: 16px; text-align: center; font-weight: 700; color: var(--secondary);">From £19</td>
-                            <td style="padding: 16px; text-align: center;">£150-300</td>
-                            <td style="padding: 16px; text-align: center;">£1,500+</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid var(--border);">
-                            <td style="padding: 16px;">Instant Response</td>
-                            <td style="padding: 16px; text-align: center; font-weight: 700; color: var(--secondary);">✅ Yes</td>
-                            <td style="padding: 16px; text-align: center;">⏳ 30-60 sec</td>
-                            <td style="padding: 16px; text-align: center;">❌ Missed</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid var(--border);">
-                            <td style="padding: 16px;">Works 24/7</td>
-                            <td style="padding: 16px; text-align: center; font-weight: 700; color: var(--secondary);">✅ Yes</td>
-                            <td style="padding: 16px; text-align: center;">⚠️ Limited</td>
-                            <td style="padding: 16px; text-align: center;">❌ No</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid var(--border);">
-                            <td style="padding: 16px;">Setup Time</td>
-                            <td style="padding: 16px; text-align: center; font-weight: 700; color: var(--secondary);">&lt; 24 hours</td>
-                            <td style="padding: 16px; text-align: center;">1-2 weeks</td>
-                            <td style="padding: 16px; text-align: center;">Weeks</td>
+                        <tr>
+                            <td>Missed-call text-back</td>
+                            <td>Included</td>
+                            <td>Included</td>
+                            <td>Included</td>
                         </tr>
                         <tr>
-                            <td style="padding: 16px;">SMS + Call Combined</td>
-                            <td style="padding: 16px; text-align: center; font-weight: 700; color: var(--secondary);">✅ Yes</td>
-                            <td style="padding: 16px; text-align: center;">⚠️ Extra</td>
-                            <td style="padding: 16px; text-align: center;">Manual</td>
+                            <td>Custom templates</td>
+                            <td>—</td>
+                            <td>Included</td>
+                            <td>Included</td>
+                        </tr>
+                        <tr>
+                            <td>Booking or payment links</td>
+                            <td>—</td>
+                            <td>Included</td>
+                            <td>Included</td>
+                        </tr>
+                        <tr>
+                            <td>Analytics and reporting</td>
+                            <td>—</td>
+                            <td>Basic</td>
+                            <td>More advanced</td>
+                        </tr>
+                        <tr>
+                            <td>Multiple numbers or teams</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>Included</td>
+                        </tr>
+                        <tr>
+                            <td>Support level</td>
+                            <td>Email</td>
+                            <td>Priority</td>
+                            <td>Hands-on</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <p style="text-align: center; margin-top: 24px; color: var(--text-light); font-style: italic;">* AutoBookr pays for itself with just 1 recovered job per month</p>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Why AutoBookr?</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h3>Missed calls are lost revenue</h3>
-                    <ul style="margin-top: 16px; padding-left: 20px;">
-                        <li>Most customers call 2–3 businesses, and book the first one that replies.</li>
-                        <li>If you miss the call while on-site, that lead often goes cold in minutes.</li>
-                        <li>AutoBookr sends an instant text so you stay in the race for the job.</li>
-                    </ul>
-                </div>
-                <div class="feature-card">
-                    <h3>Manual follow-up kills your day</h3>
-                    <ul style="margin-top: 16px; padding-left: 20px;">
-                        <li>No more end-of-day call backs to people who already hired someone else.</li>
-                        <li>Automatic replies handle first contact while you stay focused on paid work.</li>
-                        <li>Your team gets cleaner, more qualified leads to follow up.</li>
-                    </ul>
-                </div>
-                <div class="feature-card">
-                    <h3>Built for UK trades, not generic SMBs</h3>
-                    <ul style="margin-top: 16px; padding-left: 20px;">
-                        <li>Fast setup, simple plans, and no long lock-in contracts.</li>
-                        <li>Works for plumbers, electricians, builders, cleaners, and more.</li>
-                        <li>Designed to capture leads when you're on the tools.</li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </section>
 
     <section class="section section-alt">
         <div class="container">
-            <h2 class="section-title">Proven Outcomes</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h3>Save 6–10 hours/week</h3>
-                    <p>Reduce phone-tag and admin follow-up with instant automated text-back and lead routing.</p>
+            <p class="mini-label align-center">FAQ</p>
+            <h2 class="section-title">The practical questions buyers usually ask</h2>
+            <div class="faq-list compact-faq-list">
+                <div class="faq-item active">
+                    <button class="faq-question">How quickly can we get live?<span>+</span></button>
+                    <div class="faq-answer" style="display:block;">
+                        <p>Setup is designed to be quick and practical. The goal is to get your message flow live without turning this into a heavy software project.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <h3>Recover 5–15 missed leads/month</h3>
-                    <p>Turn unanswered calls into active conversations before customers move to a competitor.</p>
+                <div class="faq-item">
+                    <button class="faq-question">Does this replace a receptionist?<span>+</span></button>
+                    <div class="faq-answer">
+                        <p>No. AutoBookr is built to protect missed-call revenue with an instant text-back and cleaner next step. It is not pretending to be a live call centre.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <h3>Increase bookings by 20–30%</h3>
-                    <p>Faster first response means more quotes accepted and more jobs landed each month.</p>
+                <div class="faq-item">
+                    <button class="faq-question">Can we change the message wording?<span>+</span></button>
+                    <div class="faq-answer">
+                        <p>Yes. The higher plans are designed for more flexibility around text wording, booking links, and how the follow-up feels for your business.</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section section-alt">
-        <div class="container">
-            <h2 class="section-title">Compare Plans</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h3>Starter - £19/mo</h3>
-                    <p><strong>Essential protection.</strong> Never miss a lead again — even when you're on the tools.</p>
-                    <ul style="margin-top: 16px; padding-left: 20px;">
-                        <li>Missed call detection & text-back</li>
-                        <li>Caller notification to your phone</li>
-                        <li>Basic response templates</li>
-                        <li>Email support (48hr response)</li>
-                    </ul>
-                    <p style="margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 0.9em;">Ideal for: Solo traders just starting out</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Growth - £49/mo</h3>
-                    <p><strong>The sweet spot.</strong> Turn leads into booked jobs with payment collection.</p>
-                    <ul style="margin-top: 16px; padding-left: 20px;">
-                        <li><strong>Everything in Starter, plus:</strong></li>
-                        <li>✅ Stripe payments — collect deposits on the spot</li>
-                        <li>✅ Custom message templates</li>
-                        <li>✅ Priority support (24hr response)</li>
-                        <li>✅ Lead notifications</li>
-                    </ul>
-                    <p style="margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 0.9em;">Ideal for: Growing businesses • 2–5 person teams</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Pro - £99/mo</h3>
-                    <p><strong>Full power.</strong> Complete automation with analytics, multiple numbers & API.</p>
-                    <ul style="margin-top: 16px; padding-left: 20px;">
-                        <li><strong>Everything in Growth, plus:</strong></li>
-                        <li>🚀 Advanced automation workflows</li>
-                        <li>📊 Analytics dashboard</li>
-                        <li>📞 Multiple phone numbers</li>
-                        <li>🔗 API access</li>
-                        <li>👤 Dedicated account manager</li>
-                    </ul>
-                    <p style="margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 0.9em;">Ideal for: Multi-location businesses • Scale-ups</p>
+                <div class="faq-item">
+                    <button class="faq-question">What if we want to cancel?<span>+</span></button>
+                    <div class="faq-answer">
+                        <p>The plans are monthly. There is no long tie-in, so you are not getting trapped in a bloated contract.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -275,33 +219,17 @@
 
     <section class="section">
         <div class="container">
-            <h2 class="section-title">FAQs</h2>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <h3>Will this actually get me more jobs?</h3>
-                    <p>Yes — speed wins. When a caller gets an instant reply, you're far more likely to keep the lead and book the work before they move on.</p>
+            <div class="cta-band">
+                <div>
+                    <p class="mini-label">Next step</p>
+                    <h2>Want to see if AutoBookr fits your business?</h2>
+                    <p>Start with the plan that matches your stage, or talk to us if you want help choosing the sensible setup.</p>
                 </div>
-                <div class="faq-item">
-                    <h3>What if I'm not technical?</h3>
-                    <p>No problem. Setup is straightforward, and most trade businesses are live in under 24 hours with guided onboarding.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>What if I already have a receptionist or office admin?</h3>
-                    <p>AutoBookr supports them — it doesn't replace them. It catches missed calls instantly so your team can focus on high-value follow-up.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Is there a contract or long-term lock-in?</h3>
-                    <p>No long contracts. Monthly plans, cancel anytime, and keep full control as your business grows.</p>
+                <div class="cta-band-actions">
+                    <a href="https://buy.stripe.com/test_bJe14m2Zf7TgfAf6kya3u01" class="cta-button">Choose Growth</a>
+                    <a href="contact.html" class="secondary-button">Book a quick demo</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="section section-alt">
-        <div class="container" style="text-align: center;">
-            <h2 class="section-title">Still Have Questions?</h2>
-            <p style="margin-bottom: 32px; color: var(--text-light); max-width: 600px; margin-left: auto; margin-right: auto;">Our team is happy to help you choose the right plan for your business.</p>
-            <a href="contact.html" class="cta-button">Contact Sales</a>
         </div>
     </section>
 
@@ -310,7 +238,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>AutoBookr</h4>
-                    <p>Never miss a customer call again. Automated text-back for UK trade businesses.</p>
+                    <p>Missed call text-back for UK trades businesses that want fewer lost leads and cleaner follow-up.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
@@ -328,8 +256,8 @@
                 </div>
                 <div class="footer-section">
                     <h4>Contact</h4>
-                    <p>hello@autobookr.co.uk</p>
-                    <p>01234 567890</p>
+                    <p>Contact details available on the contact page</p>
+                    <p>UK-focused support</p>
                 </div>
             </div>
             <div class="footer-bottom">

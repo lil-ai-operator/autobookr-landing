@@ -1,91 +1,7 @@
 // AutoBookr - Shared JavaScript
 
-// Theme (dark/light) toggle
-(function() {
-    const storageKey = 'autobookr-theme';
-    const root = document.documentElement;
-
-    function getPreferredTheme() {
-        const saved = localStorage.getItem(storageKey);
-        if (saved === 'dark' || saved === 'light') return saved;
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-
-    function applyTheme(theme) {
-        if (theme === 'dark') {
-            root.setAttribute('data-theme', 'dark');
-        } else {
-            root.removeAttribute('data-theme');
-        }
-    }
-
-    function updateToggleLabel(btn) {
-        if (!btn) return;
-        const isDark = root.getAttribute('data-theme') === 'dark';
-        btn.textContent = isDark ? '☀️ Light' : '🌙 Dark';
-        btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-    }
-
-    applyTheme(getPreferredTheme());
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const nav = document.querySelector('.nav-content');
-        if (!nav) return;
-
-        const toggle = document.createElement('button');
-        toggle.type = 'button';
-        toggle.className = 'theme-toggle';
-        updateToggleLabel(toggle);
-
-        const navLinks = nav.querySelector('.nav-links');
-        const hamburger = nav.querySelector('.hamburger');
-
-        if (hamburger) {
-            nav.insertBefore(toggle, hamburger);
-        } else if (navLinks) {
-            nav.insertBefore(toggle, navLinks);
-        } else {
-            nav.appendChild(toggle);
-        }
-
-        toggle.addEventListener('click', function() {
-            const isDark = root.getAttribute('data-theme') === 'dark';
-            const next = isDark ? 'light' : 'dark';
-            applyTheme(next);
-            localStorage.setItem(storageKey, next);
-            updateToggleLabel(toggle);
-        });
-    });
-})();
-
-// Checkout banner
-(function() {
-    const q = new URLSearchParams(window.location.search);
-    const state = q.get('checkout');
-    if (!state) return;
-    const msg = document.createElement('div');
-    msg.style.maxWidth = '1100px';
-    msg.style.margin = '92px auto 0';
-    msg.style.padding = '12px 16px';
-    msg.style.borderRadius = '10px';
-    msg.style.fontWeight = '600';
-    msg.style.fontFamily = 'Inter, -apple-system, BlinkMacSystemFont, sans-serif';
-    if (state === 'success') {
-        msg.style.background = '#dcfce7';
-        msg.style.color = '#166534';
-        msg.textContent = '✅ Payment successful (test mode). We\'ll contact you shortly to set up AutoBookr.';
-    } else if (state === 'cancel') {
-        msg.style.background = '#fef3c7';
-        msg.style.color = '#92400e';
-        msg.textContent = '⚠️ Checkout cancelled. You can choose any plan whenever you\'re ready.';
-    } else {
-        return;
-    }
-    document.body.prepend(msg);
-})();
-
 // Mobile menu toggle
-document.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
@@ -95,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
             navLinks.classList.toggle('active');
         });
 
-        // Close menu when clicking a link
         navLinks.querySelectorAll('a').forEach(function(link) {
             link.addEventListener('click', function() {
                 hamburger.classList.remove('active');
@@ -105,12 +20,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Checkout banner
+(function() {
+    const q = new URLSearchParams(window.location.search);
+    const state = q.get('checkout');
+    if (!state) return;
+
+    const msg = document.createElement('div');
+    msg.className = 'checkout-banner ' + (state === 'success' ? 'success' : 'cancel');
+    msg.textContent = state === 'success'
+        ? 'Payment successful. We will contact you shortly about setup.'
+        : 'Checkout cancelled. You can come back and choose a plan whenever you are ready.';
+    document.body.prepend(msg);
+})();
+
 // Highlight current nav link
-document.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const navLinks = document.querySelectorAll('.nav-links a');
-    
-    navLinks.forEach(function(link) {
+    document.querySelectorAll('.nav-links a').forEach(function(link) {
         const href = link.getAttribute('href');
         if (href === currentPage || (currentPage === '' && href === 'index.html')) {
             link.classList.add('active');
@@ -118,8 +45,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Scroll reveal animations
-document.addEventListener('DOMContentLoaded', function() {
+// Add loading state on navigation CTAs
+window.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.cta-button, .pricing-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const href = btn.getAttribute('href');
+            if (href && !href.startsWith('#') && !href.startsWith('javascript')) {
+                btn.classList.add('loading');
+            }
+        });
+    });
+});
+
+// Simple reveal animation
+window.addEventListener('DOMContentLoaded', function() {
     const animatedSelectors = [
         '.step',
         '.pricing-card',
@@ -137,9 +76,8 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     const animatedElements = document.querySelectorAll(animatedSelectors.join(','));
-    animatedElements.forEach(function(el, index) {
+    animatedElements.forEach(function(el) {
         el.classList.add('reveal');
-        el.style.transitionDelay = Math.min(index * 40, 280) + 'ms';
     });
 
     if (!('IntersectionObserver' in window)) {
@@ -156,50 +94,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 obs.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+    }, { threshold: 0.15, rootMargin: '0px 0px -4% 0px' });
 
     animatedElements.forEach(function(el) {
         observer.observe(el);
     });
 });
 
-// Premium card tilt/parallax
-(function() {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) return;
-
-    const cardSelectors = [
-        '.pricing-card',
-        '.testimonial',
-        '.feature-card',
-        '.benefit-item',
-        '.use-case-item',
-        '.stat-card'
-    ];
-
-    const cards = document.querySelectorAll(cardSelectors.join(','));
-    cards.forEach(function(card) {
-        card.classList.add('tilt-card');
-
-        card.addEventListener('mousemove', function(e) {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -4;
-            const rotateY = ((x - centerX) / centerX) * 4;
-            card.style.transform = 'perspective(900px) rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg) translateY(-3px)';
-        });
-
-        card.addEventListener('mouseleave', function() {
-            card.style.transform = '';
-        });
-    });
-})();
-
 // Results stats count-up animation
-document.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function() {
     const stats = document.querySelectorAll('.stat-number');
     if (!stats.length) return;
 
@@ -213,7 +116,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const prefix = prefixMatch ? prefixMatch[0] : '';
         const suffix = suffixMatch ? suffixMatch[0] : '';
         const decimals = raw.includes('.') ? (raw.split('.')[1] || '').replace(/[^\d]/g, '').length : 0;
-
         const duration = 1200;
         const start = performance.now();
 
@@ -251,168 +153,88 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Contact form handling
-document.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = contactForm.querySelector('button');
-            const originalText = btn.textContent;
-            btn.textContent = 'Sending...';
-            btn.disabled = true;
-            
-            // Simulate form submission
-            setTimeout(function() {
-                btn.textContent = '✓ Message Sent!';
-                btn.style.background = '#10b981';
-                contactForm.reset();
-                setTimeout(function() {
-                    btn.textContent = originalText;
-                    btn.style.background = '';
-                    btn.disabled = false;
-                }, 3000);
-            }, 1000);
-        });
-    }
-    
-    // Newsletter form handling
-    const newsletterForm = document.getElementById('newsletter-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const input = newsletterForm.querySelector('input[type="email"]');
-            const btn = newsletterForm.querySelector('button');
-            const email = input.value;
-            
-            if (!email) return;
-            
-            const originalText = btn.textContent;
-            btn.textContent = 'Subscribing...';
-            btn.disabled = true;
-            
-            // Simulate subscription
-            setTimeout(function() {
-                btn.textContent = '✓ Subscribed!';
-                btn.style.background = '#10b981';
-                input.value = '';
-                setTimeout(function() {
-                    btn.textContent = originalText;
-                    btn.style.background = '';
-                    btn.disabled = false;
-                }, 3000);
-                
-                // Track subscription
-                if (window.autobookrTrack) {
-                    window.autobookrTrack.custom('newsletter_signup', { email: email });
-                }
-            }, 1000);
-        });
-    }
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = contactForm.querySelector('button');
+        if (!btn) return;
+        const originalText = btn.textContent;
+        btn.textContent = 'Thanks — we will be in touch';
+        btn.disabled = true;
+        contactForm.reset();
+
+        setTimeout(function() {
+            btn.textContent = originalText;
+            btn.disabled = false;
+        }, 2500);
+    });
 });
 
-// ============================================
-// Analytics Tracking - CTA Click Events
-// ============================================
-(function() {
-    // Track all CTA button clicks
-    function trackCTAClick(ctaType, ctaText, ctaHref) {
-        const eventData = {
-            event: 'cta_click',
-            cta_type: ctaType,
-            cta_text: ctaText,
-            cta_href: ctaHref,
-            page: window.location.pathname.split('/').pop() || 'index.html',
-            timestamp: new Date().toISOString()
-        };
-        
-        console.log('📊 Analytics:', JSON.stringify(eventData, null, 2));
-        
-        // Also dispatch a custom event for potential GTM/analytics tools
-        window.dispatchEvent(new CustomEvent('autobookr_cta_click', { detail: eventData }));
+// Revenue calculator
+window.addEventListener('DOMContentLoaded', function() {
+    const avgJobValue = document.getElementById('avgJobValue');
+    const missedCalls = document.getElementById('missedCalls');
+    const recoveryRate = document.getElementById('recoveryRate');
+    const planType = document.getElementById('planType');
+
+    if (!avgJobValue || !missedCalls || !recoveryRate || !planType) return;
+
+    function formatGBP(value) {
+        return new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 }).format(value);
     }
-    
-    // Track pricing button clicks specifically
-    function trackPricingClick(planName, price, planType) {
-        const eventData = {
-            event: 'pricing_click',
-            plan: planName,
-            price: price,
-            plan_type: planType,
-            page: window.location.pathname.split('/').pop() || 'index.html',
-            timestamp: new Date().toISOString()
-        };
-        
-        console.log('📊 Analytics:', JSON.stringify(eventData, null, 2));
-        window.dispatchEvent(new CustomEvent('autobookr_pricing_click', { detail: eventData }));
+
+    function calculateRecovery() {
+        const avg = Number(avgJobValue.value || 0);
+        const missed = Number(missedCalls.value || 0);
+        const rate = Number(recoveryRate.value || 0) / 100;
+        const plan = Number(planType.value || 0);
+
+        const weekly = avg * missed * rate;
+        const monthly = weekly * 4;
+        const annual = monthly * 12;
+        const net = monthly - plan;
+
+        const weeklyEl = document.getElementById('weeklyRecovery');
+        const monthlyEl = document.getElementById('monthlyRecovery');
+        const annualEl = document.getElementById('annualRecovery');
+        const netEl = document.getElementById('netProfit');
+
+        if (weeklyEl) weeklyEl.textContent = formatGBP(weekly);
+        if (monthlyEl) monthlyEl.textContent = formatGBP(monthly);
+        if (annualEl) annualEl.textContent = formatGBP(annual);
+        if (netEl) netEl.textContent = formatGBP(net);
     }
-    
-    // Track nav link clicks
-    function trackNavClick(navText, navHref) {
-        const eventData = {
-            event: 'nav_click',
-            nav_text: navText,
-            nav_href: navHref,
-            timestamp: new Date().toISOString()
-        };
-        
-        console.log('📊 Analytics:', JSON.stringify(eventData, null, 2));
-        window.dispatchEvent(new CustomEvent('autobookr_nav_click', { detail: eventData }));
-    }
-    
-    // Track all CTA buttons on page
-    document.addEventListener('DOMContentLoaded', function() {
-        // Main CTA buttons (hero, sections)
-        document.querySelectorAll('.cta-button').forEach(function(btn) {
-            btn.addEventListener('click', function(e) {
-                trackCTAClick('main_cta', btn.textContent.trim(), btn.getAttribute('href'));
-            });
-        });
-        
-        // Pricing buttons
-        document.querySelectorAll('.pricing-btn').forEach(function(btn) {
-            btn.addEventListener('click', function(e) {
-                const card = btn.closest('.pricing-card');
-                const planName = card ? card.querySelector('h3').textContent : 'Unknown';
-                const priceEl = card ? card.querySelector('.price') : null;
-                const price = priceEl ? priceEl.textContent.trim() : 'Unknown';
-                trackPricingClick(planName, price, 'pricing_card');
-            });
-        });
-        
-        // Footer links (as CTAs)
-        document.querySelectorAll('footer a').forEach(function(link) {
-            link.addEventListener('click', function(e) {
-                trackCTAClick('footer_link', link.textContent.trim(), link.getAttribute('href'));
-            });
-        });
-        
-        // Nav links (excluding external)
-        document.querySelectorAll('.nav-links a').forEach(function(link) {
-            link.addEventListener('click', function(e) {
-                trackNavClick(link.textContent.trim(), link.getAttribute('href'));
-            });
-        });
-        
-        // Track page view on load
-        console.log('📊 Analytics:', JSON.stringify({
-            event: 'page_view',
-            page: window.location.pathname.split('/').pop() || 'index.html',
-            referrer: document.referrer || 'direct',
-            timestamp: new Date().toISOString()
-        }, null, 2));
+
+    [avgJobValue, missedCalls, recoveryRate, planType].forEach(function(el) {
+        el.addEventListener('input', calculateRecovery);
+        el.addEventListener('change', calculateRecovery);
     });
-    
-    // Expose tracking functions globally for manual tracking if needed
-    window.autobookrTrack = {
-        cta: trackCTAClick,
-        pricing: trackPricingClick,
-        nav: trackNavClick,
-        custom: function(eventName, data) {
-            console.log('📊 Analytics:', JSON.stringify({
-                event: eventName,
-                ...data,
-                timestamp: new Date().toISOString()
-            }, null, 2));
-        }
-    };
-})();
+
+    calculateRecovery();
+});
+
+// FAQ accordion
+window.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-item .faq-question').forEach(function(button) {
+        button.addEventListener('click', function() {
+            const item = button.closest('.faq-item');
+            const answer = item ? item.querySelector('.faq-answer') : null;
+            if (!item || !answer) return;
+
+            const isOpen = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(function(other) {
+                other.classList.remove('active');
+                const otherAnswer = other.querySelector('.faq-answer');
+                if (otherAnswer) otherAnswer.style.display = 'none';
+            });
+
+            if (!isOpen) {
+                item.classList.add('active');
+                answer.style.display = 'block';
+            }
+        });
+    });
+});
